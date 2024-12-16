@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Salary Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Salary Prediction</h1>
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+        <form method="POST">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required min="0"><br>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                {% for g in genders %}
+                    <option value="{{ g }}">{{ g }}</option>
+                {% endfor %}
+            </select><br>
+
+            <label for="education">Education Level:</label>
+            <select id="education" name="education" required>
+                {% for e in educations %}
+                    <option value="{{ e }}">{{ e }}</option>
+                {% endfor %}
+            </select><br>
+
+            <label for="job_title">Job Title:</label>
+            <select id="job_title" name="job_title" required>
+                {% for j in job_titles %}
+                    <option value="{{ j }}">{{ j }}</option>
+                {% endfor %}
+            </select><br>
+
+            <label for="experience">Years of Experience:</label>
+            <input type="number" id="experience" name="experience" required min="0" step="0.1"><br>
+
+            <button type="submit">Predict Salary</button>
+        </form>
+    </div>
+</body>
+</html>
